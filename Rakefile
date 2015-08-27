@@ -1,6 +1,3 @@
-# URL
-heroku_url = "http://f52-emails.herokuapp.com/"
-
 # Deploys to Heroku
 multitask :heroku do
   puts "## Deploying to Heroku"
@@ -19,4 +16,3 @@ namespace :assets do
     sh "middleman build"
   end
 end
-

@@ -1,6 +1,6 @@
 # Getting Started Guide
 
-Food52 is using [Middleman](http://middlemanapp.com/getting-started/) to construct and preview email newsletters. You can view the [rendered newsletters at http://f52-emails.herokuapp.com/](http://f52-emails.herokuapp.com/).
+Food52 is using [Middleman](http://middlemanapp.com/getting-started/) to construct and preview email newsletters.
 
 ## Setup Instructions
 
