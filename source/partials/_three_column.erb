@@ -1,0 +1,32 @@
+<!-- Three Column Content Block -->
+<table cellpadding="0" cellspacing="0" border="0" class="content-block">
+  <!-- Start of Three Columns -->
+  <tr>
+    <td class="three-col">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <% items.each_with_index do |item, i|%>
+          <td valign="top">
+          <% if i == 0 %>
+            <div class="col first">
+            <% elsif i == 2 %>
+            <div class="col last">
+            <% else %>
+            <div class="col">
+            <% end %>
+            <div class="content-item">
+              <div class="content-image">
+                <%= link_to image_tag(item.image, width: "180px", alt: "Alt Text"), item.url, target: "_blank" %>
+              </div>
+              <div class="content-description">
+                <%= link_to item.title, item.url, target: "_blank" %>
+              </div>
+            </div>
+          </div>
+        </td>
+        <% end %>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

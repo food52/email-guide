@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Email Styleguide</title>
+  <meta charset="utf-8">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <%= stylesheet_link_tag "styleguide" %>
+  <%= partial "partials/styles" %>
+</head>
+<body>
+
+  <header class="styleguide-header">
+    <div class="styleguide-header-content">Email Styleguide</div>
+  </header>
+
+  <div class="styleguide-main">
+    <nav class="styleguide-nav">
+      <h3>Building Blocks</h3>
+      <ul>
+        <li>
+          <a href="/styleguide/empty/">Empty HTML</a>
+        </li>
+        <li>
+          <a href="/styleguide/footer/">Footer</a>
+        </li>
+        <li>
+          <a href="/styleguide/preheader/">Preheader</a>
+        </li>
+        <li>
+          <a href="/styleguide/header/">Header</a>
+        </li>
+      </ul>
+      <h3>Buttons</h3>
+      <ul>
+        <li>
+          <a href="/styleguide/button/">Button</a>
+        </li>
+      </ul>
+      <h3>Text Elements</h3>
+      <ul>
+        <li>
+          <a href="/styleguide/pullquote">Pull Quote</a>
+        </li>
+        <li>
+          <a href="/styleguide/paragraph">Paragraph</a>
+        </li>
+      </ul>
+      <h3>Dividers &amp; Headers</h3>
+      <ul>
+        <li>
+          <a href="/styleguide/divider/">Section Divider</a>
+        </li>
+      </ul>
+      <h3>Columns</h3>
+      <ul>
+        <li>
+          <a href="/styleguide/two-column/">Two Column</a>
+        </li>
+        <li>
+          <a href="/styleguide/three-column/">Three Column</a>
+        </li>
+      </ul>
+    </nav> <!-- /nav -->
+    <section class="styleguide-block">
+      <%= yield %>
+    </section> <!-- /styleguide-block -->
+  </div> <!-- /styleguide-main -->
+  <%= javascript_include_tag "public" %>
+</body>
+</html>
+

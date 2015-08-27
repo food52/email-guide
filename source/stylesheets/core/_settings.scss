@@ -1,0 +1,52 @@
+// *************************************
+//
+//   Settings
+//   -> Fonts, Variables
+//
+// *************************************
+
+// -------------------------------------
+//   @font-face
+// -------------------------------------
+
+
+// -------------------------------------
+//   Variables
+// -------------------------------------
+
+
+// Colors
+// --------------------------
+$brand-primary:       #477DCA;
+$brand-secondary:     #F70017;
+$brand-tertiary:      #FFFA00;
+
+$alert:               #FFE84A;
+$error:               #FF0005;
+$warning:             $alert;
+$success:             #DFF0D8;
+
+$link-color:          $brand-primary;
+
+$white:               #FFF;
+$gray:                #999;
+$gray-light:          lighten($gray, 10%);
+$gray-lighter:        lighten($gray, 20%);
+$gray-lightest:       lighten($gray, 40%);
+$gray-dark:           darken($gray, 10%);
+$gray-darker:         darken($gray, 20%);
+$gray-darkest:        darken($gray, 40%);
+$black:               #090A0E; // Never use #000 for black (http://ianstormtaylor.com/design-tip-never-use-black/)
+
+$text-color:          $black;
+$background-color:    $white;
+
+// Fonts
+// --------------------------
+
+$base-font-size:          16px;
+$base-line-height:        1.5;
+$font-family-sans-serif:  "Helvetica";
+$font-family-serif:       "Georgia";
+$font-family-base:        $font-family-sans-serif;
+$font-family-headings:    $font-family-serif;

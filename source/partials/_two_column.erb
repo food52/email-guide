@@ -1,0 +1,35 @@
+<!-- Two Column Content Block -->
+<table cellpadding="0" cellspacing="0" border="0" class="content-block">
+  <tr>
+    <td>
+      <div class="content-block-header">
+        <h2>Block Headline</h2>
+      </div> <!-- /content-block-header -->
+    </td>
+  </tr>
+  <!-- Start of Two Columns -->
+  <tr>
+    <td class="two-col">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <% items.each_slice(2) do |item| %>
+        <tr>
+          <% item.each_with_index do |it, i| %>
+          <td valign="top">
+            <div class="col <%= 'last' if i == 1 %>">
+              <div class="content-item">
+                <div class="content-image">
+                  <%= link_to image_tag(it.image, width: "285px", alt: "Alt Text"), it.url, target: "_blank" %>
+                </div>
+                <div class="content-description">
+                  <%= link_to it.title, it.url, target: "_blank" %>
+                </div>
+              </div>
+            </div>
+          </td>
+        <% end %>
+        </tr>
+      <% end %>
+      </table>
+    </td>
+  </tr>
+</table>

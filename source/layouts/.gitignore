@@ -1,0 +1,10 @@
+# vim's tmp files
+*.swp
+*.swo
+*.swn
+*.swm
+*.swl
+*.swk
+
+.DS_Store
+build/

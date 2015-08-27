@@ -1,0 +1,303 @@
+// *************************************
+//
+//   Helpers
+//   -> Extends, Functions, Mixins, Animations
+//
+// *************************************
+
+// -------------------------------------
+//   Extends
+// -------------------------------------
+
+// ----- Debug ----- //
+%debug {
+  background-color: pink !important;
+}
+
+// ----- Ellipsis ----- //
+%ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// ----- Clearfix ----- //
+
+%group {
+  *zoom:1;
+  &:before,
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: ".";
+    clear: both;
+    height: 0;
+  }
+}
+
+
+// -------------------------------------
+//   Functions
+// -------------------------------------
+
+// ----- Turn Pixels into Ems ----- //
+@function calc-em($target-px, $context: $base-font-size) {
+  @return ($target-px / $context) * 1em;
+}
+
+// -------------------------------------
+//   Responsive Mixins
+// -------------------------------------
+//
+
+// ----- Respond-to ----- //
+
+// Assumes you want IE 8 and below to use largest screen size
+@mixin respond-to($viewport-width, $ie-version: 'lt-ie9') {
+  @media only screen and (min-width: $viewport-width) {
+    @content;
+  }
+  @if $ie-version == 'lt-ie9' {
+    html.lt-ie9 & { // Using Paul Irish's conditional comments
+      @content;
+    }
+  }
+  @else if $ie-version == 'lt-ie8' {
+    html.lt-ie8 & { // Using Paul Irish's conditional comments
+      @content;
+    }
+  }
+}
+
+// ----- Retina Images ----- //
+//
+@mixin image-2x($image, $width, $height) {
+  @media (min--moz-device-pixel-ratio: 1.3),
+         (-o-min-device-pixel-ratio: 2.6/2),
+         (-webkit-min-device-pixel-ratio: 1.3),
+         (min-device-pixel-ratio: 1.3),
+         (min-resolution: 1.3dppx) {
+    /* on retina, use image that's scaled by 2 */
+    background-image: url($image);
+    background-size: $width $height;
+  }
+}
+
+// ----- Scoped Media Queries ----- //
+
+@mixin scopedmediaquery($queries...) {
+  $length: length($queries);
+  @for $i from 1 through $length{
+    @if $i % 2 == 1 {
+      @media #{nth($queries, $i)} {
+        #{nth($queries, $i+1)} {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+// ----- Example Usage ----- //
+
+/*
+  @include scopedmediaquery(
+    '(min-width : 30em)', '.content',
+    '(min-width : 90em)', 'aside'
+  ) {
+*/
+
+// Breakpoint Styles Here
+/* 
+  .schedule-component {
+      float: left;
+      width: 100%;
+      position:relative;
+  }
+  .schedule-component ul,
+  .schedule-component li {
+    list-style: none;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+  }
+}
+*/
+
+// -------------------------------------
+//  Typographic Mixins 
+// -------------------------------------
+
+// ----- Replace Text ----- //
+
+@mixin replace-text($width, $height, $background-details) {
+  text-indent: -9999px;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  width: $width;
+  height: $height;
+  background: $background-details;
+}
+
+// ----- Zero-out a List ----- //
+%zero-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  li {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+// Typekit Fonts
+@mixin typekit-font($family,$weight:400) {
+  font: {
+    @if $family == brandon {
+      family: 'brandon-grotesque', helvetica, sans-serif;
+    } @else if $family == adelle {
+      family: 'adelle', georgia, serif;
+    } @else if $family == lft {
+      family: 'lft-etica', sans-serif;
+    }
+    weight: $weight;
+  }
+}
+
+// ----- Input Placeholder Text ----- //
+//
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    @content;
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+    @content;
+  }
+
+  &:-ms-input-placeholder {  
+    @content;
+  }
+}
+
+// -------------------------------------
+//   Layout Mixins
+// -------------------------------------
+
+// ----- Vertical Align Anything ----- //
+%vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+// ----- One-true-layout Hack for Equal Columns ----- //
+@mixin equalize-column {
+  margin-bottom: -99999px;
+  padding-bottom: 99999px;
+}
+
+
+@mixin absolute($args) {
+  position: absolute;
+
+  // List of offset to check for in $args
+  $offsets: top right bottom left;
+
+  // We loop through $offsets to deal with them one by one
+  @each $o in $offsets {
+    // If current offset found in $args assigns its index to $i or 'false' if not found
+    $i: index($args, $o);
+
+    // Now we do the verifications
+    // 1. Is the offset listed in $args? (not false)
+    // 2. Is the offset value within the list range?
+    // 3. Is the offset value valid?
+    @if $i                                      // 1 
+    and $i + 1 <= length($args)                 // 2 
+    and type-of( nth($args, $i + 1) ) == number /* 3 */ {
+      // If everything is okay we assign the according value to the current offset
+      #{$o}: nth($args, $i + 1);
+    }
+  }
+}
+
+
+// -------------------------------------
+//   Animations
+// -------------------------------------
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content
+  }
+  @-moz-keyframes #{$name} {
+    @content
+  }
+  @-ms-keyframes #{$name} {
+    @content
+  }
+  @-o-keyframes #{$name} {
+    @content
+  }
+  @keyframes #{$name} {
+    @content
+  }
+}
+
+@mixin animation($value) {
+  -webkit-animation: $value;
+  -moz-animation: $value;
+  -ms-animation: $value;
+  -o-animation: $value;
+  animation: $value;
+}
+
+// ----- Example Usage ----- //
+
+/*
+@include keyframes(move) {
+  0%   { left: 0; }
+  100% { left: 100px; }
+}
+
+.box {
+  @include animation(move 0.5s ease infinite alternate);
+}
+*/
+
+// -------------------------------------
+//   IE Hacks
+// -------------------------------------
+
+// ----- < IE7 ----- //
+@mixin ie7 {
+  * + html & { // Using browser hacks
+    @content;
+  }
+}
+
+// ----- < IE8 ----- //
+@mixin ie8 {
+  html.lt-ie8 & { // Using Paul Irish's conditional comments
+    @content;
+  }
+}
+
+// ----- < IE9 ----- //
+@mixin ie9 {
+  html.lt-ie9 & { // Using Paul Irish's conditional comments
+    @content;
+  }
+}

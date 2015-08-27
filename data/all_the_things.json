@@ -1,0 +1,42 @@
+{
+  "button" : {
+    "text" : "Button",
+    "url" : "",
+    "bg_color" : "#57696d",
+    "font_color" : "#FFF"
+  },
+  "pullquote" : {
+    "text" : "Mauris finibus vel massa non."
+  },
+  "paragraph" : {
+    "text" : "Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec sit amet tellus ac odio pellentesque vestibulum eget sed elit."
+  },
+  "items_two" : [
+  {
+    "title" : "Product TK",
+    "url" : "",
+    "image": "http://placehold.it/180x180"
+  },
+  {
+    "title" : "Product TK",
+    "url" : "",
+    "image": "http://placehold.it/180x180"
+  }],
+  "items_three" : [
+  {
+    "title" : "Product TK",
+    "url" : "",
+    "image": "http://placehold.it/180x180"
+  },
+  {
+    "title" : "Product TK",
+    "url" : "",
+    "image": "http://placehold.it/180x180"
+  },
+  {
+    "title" : "Product TK",
+    "url" : "",
+    "image": "http://placehold.it/180x180"
+  }]
+}
+

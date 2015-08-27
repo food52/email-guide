@@ -1,0 +1,46 @@
+<%
+
+content = data.all_the_things
+
+button = content.button
+
+pullquote = content.pullquote
+paragraph = content.paragraph
+
+items_two = content.items_two
+items_three = content.items_three
+
+%>
+
+<div class="all-container">
+
+  <%= partial "partials/styles" %>
+
+  <!-- Button -->
+  <%= partial "partials/button", locals: { btn: button } %>
+
+  <!-- Divider -->
+  <%= partial "partials/divider" %>
+
+  <!-- Footer -->
+  <%= partial "partials/footer" %>
+
+  <!-- Header -->
+  <%= partial "partials/header" %>
+
+  <!-- Paragraph -->
+  <%= partial "partials/paragraph", locals: { text: paragraph.text } %>
+
+  <!-- Preheader -->
+  <%= partial "partials/preheader" %>
+
+  <!-- Pullquote -->
+  <%= partial "partials/pullquote", locals: { text: pullquote.text } %>
+
+  <!-- Three Column -->
+  <%= partial "partials/three_column", locals: { items: items_three } %>
+
+  <!-- Two Column -->
+  <%= partial "partials/two_column", locals: { items: items_two } %>
+
+</div>
