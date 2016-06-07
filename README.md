@@ -5,7 +5,7 @@ Food52 is using [Middleman](http://middlemanapp.com/getting-started/) to constru
 ## Setup Instructions
 
 ### Git Repo
-* `git clone -b git@github.com:food52/email-guide.git`
+* `git clone git@github.com:food52/email-guide.git`
 * `cd email-guide`
 * `gem install bundler`
 * `bundle exec middleman` (to run in your local browser)`
